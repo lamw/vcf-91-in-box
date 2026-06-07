@@ -7,12 +7,21 @@ $VCFInstallerRootPassword = "VMware1!VMware1!"
 
 $SSHKeys = ""
 
+# See https://williamlam.com/2026/05/vcf-9-1-comprehensive-vcf-installer-sddc-manager-configuration-workarounds-for-lab-deployments.html for list of configuration overrides
+
+# Configuration overrides to be added to /home/vcf/feature.properties
 $VCFFeatureProperties = @{
     "feature.vcf.vgl-29121.single.host.domain" = "true"
     "feature.vcf.vgl-43370.vsan.esa.sddc.managed.disk.claim" = "true"
 }
 
+# Configuration overrides to be added to /etc/vmware/vcf/domainmanager/application.properties
 $VCFDomainManagerProperties = @{
+    "vsan.esa.sddc.managed.disk.claim" = "true"
+}
+
+# Configuration overrides to be added to /etc/vmware/vcf/operationsmanager/application-prod.properties
+$VCFOperationsManagerProperties = @{
     "vsan.esa.sddc.managed.disk.claim" = "true"
 }
 
@@ -101,7 +110,6 @@ if($SSHKeys -ne "") {
     $script += "systemctl restart sshd`n"
 }
 
-
 $vcfDomainConfigFile = "/etc/vmware/vcf/domainmanager/application.properties"
 if($VCFDomainManagerProperties -ne $null) {
     $VCFDomainManagerProperties.GetEnumerator() | Foreach-Object {
@@ -109,6 +117,12 @@ if($VCFDomainManagerProperties -ne $null) {
     }
 }
 
+$vcfOperationsConfigFile = "/etc/vmware/vcf/operationsmanager/application-prod.properties"
+if($VCFOperationsManagerProperties -ne $null) {
+    $VCFOperationsManagerProperties.GetEnumerator() | Foreach-Object {
+        $script += "echo $($_.key)=$($_.value) >> ${vcfDomainConfigFile}`n"
+    }
+}
 
 $vcfFeatureConfigFile = "/home/vcf/feature.properties"
 $VCFFeatureProperties.GetEnumerator() | Foreach-Object {
