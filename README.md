@@ -81,7 +81,8 @@ Deploy a fully functional VMware Cloud Foundation 9.1 environment on one, two or
 ## Installation
 
 0. Update your hardware to the latest vendor firmware
-    * For MS-A2 owners, please follow [these instructions](https://williamlam.com/2025/07/quick-tip-updating-firmware-on-minisforum-ms-a2.html) for firmware and also [these instructions](https://williamlam.com/2026/03/maximizing-vsan-esa-performance-on-minisforum-ms-a2.html) for network optimizations before beginning.
+    * For MS-A2 owners, please follow [these instructions](https://williamlam.com/2025/07/quick-tip-updating-firmware-on-minisforum-ms-a2.html) for firmware
+    * Apply these [these instructions](https://williamlam.com/2026/03/maximizing-vsan-esa-performance-on-minisforum-ms-a2.html) for network optimizations if you are doing a manual installation (already incorporated into ESX kickstart examples)
 
 1. Set up a VCF Offline Depot using the new `VCF Download Tool` by following the [Broadcom documentation](https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/deployment/deploying-a-new-vmware-cloud-foundation-or-vmware-vsphere-foundation-private-cloud-/preparing-your-environment/downloading-binaries-to-the-vcf-installer-appliance/download-install-binaries-to-an-offline-depot.html)
 
@@ -270,6 +271,8 @@ Here is an example of single host deployment and total deployment duration for e
 12. There are a number of [post-VCF deployment optimizations](https://williamlam.com/2026/04/automating-lab-optimizations-for-post-deployment-of-vmware-cloud-foundation-vcf.html) that should be run for lab environments. You can refer to the linked blog post and run the PowerShell script `vcf-post-deploy-lab-tweaks.ps1`.
 
 ![](screenshots/screenshot-16.png)
+
+13. Apply this [additional optimization](https://williamlam.com/2026/07/quick-tip-reducing-high-cpu-utilization-on-nsx-due-to-slow-entropy-from-amd-zen4-5-cpus.html) for reducing High CPU Utilization on NSX components (NSX Manager, Edges and Virtual Network Appliances) when using AMD Zen4/5 CPUs.
 
 ## Additional Blog Resources
 
