@@ -272,7 +272,9 @@ Here is an example of single host deployment and total deployment duration for e
 
 ![](screenshots/screenshot-16.png)
 
-13. Apply this [additional optimization](https://williamlam.com/2026/07/quick-tip-reducing-high-cpu-utilization-on-nsx-due-to-slow-entropy-from-amd-zen4-5-cpus.html) for reducing High CPU Utilization on NSX components (NSX Manager, Edges and Virtual Network Appliances) when using AMD Zen4/5 CPUs.
+13. Additional optimization for those using AMD Zen4/5 CPUs.
+* Apply [additional NSX optimization](https://williamlam.com/2026/07/quick-tip-reducing-high-cpu-utilization-on-nsx-due-to-slow-entropy-from-amd-zen4-5-cpus.html) for reducing High CPU Utilization on NSX components (NSX Manager, Edges and Virtual Network Appliances) when using AMD Zen4/5 CPUs.
+* Apply [additional VCFA optimization](https://williamlam.com/2026/08/quick-tip-reducing-high-cpu-utilization-in-vcf-automation-vcfa-on-amd-zen4-zen5-cpus.html) for reducing High CPU Utilization on VCVF Automation (VCFA) when using AMD Zen4/5 CPUs.
 
 ## Additional Blog Resources
 
