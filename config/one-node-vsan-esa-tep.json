@@ -1,6 +1,6 @@
 {
-    "version": "9.1.0.0",
-    "vcfInstanceName": "VMUG x Intel x Micron VCF 9.1 Instance",
+    "version": "9.1.1.0",
+    "vcfInstanceName": "VMUG x Intel x Micron VCF 9..1 Instance",
     "sddcId": "vcf-m01",
     "ceipEnabled": true,
     "skipEsxThumbprintValidation": true,

@@ -1,6 +1,6 @@
 {
-    "version": "9.1.0.0",
-    "vcfInstanceName": "William Lam VCF 9.1 Instance",
+    "version": "9.1.1.0",
+    "vcfInstanceName": "William Lam VCF 9.1.1 Instance",
     "sddcId": "vcf-m01",
     "ceipEnabled": true,
     "skipEsxThumbprintValidation": true,
@@ -17,20 +17,6 @@
     "hostSpecs": [
         {
             "hostname": "esx01.vcf.lab",
-            "credentials": {
-                "username": "root",
-                "password": "VMware1!"
-            }
-        },
-        {
-            "hostname": "esx02.vcf.lab",
-            "credentials": {
-                "username": "root",
-                "password": "VMware1!"
-            }
-        },
-        {
-            "hostname": "esx03.vcf.lab",
             "credentials": {
                 "username": "root",
                 "password": "VMware1!"
@@ -138,42 +124,20 @@
         "size": "small"
     },
     "nsxtSpec": {
-        "transportVlanId": "60",
-        "ipAddressPoolSpec": {
-            "name": "vcf-m01-cl01-tep01",
-            "description": "ESXi Host Overlay TEP IP Pool",
-            "subnets": [
-                {
-                    "cidr": "172.30.60.0/24",
-                    "gateway": "172.30.60.1",
-                    "ipAddressPoolRanges": [
-                        {
-                            "start": "172.30.60.10",
-                            "end": "172.30.60.20"
-                        }
-                    ]
-                }
-            ]
-        },
         "nsxtManagerSize": "medium",
         "vipFqdn": "nsx01.vcf.lab",
         "rootNsxtManagerPassword": "VMware1!VMware1!",
         "nsxtAdminPassword": "VMware1!VMware1!",
         "nsxtAuditPassword": "VMware1!VMware1!",
         "useExistingDeployment": false,
-        "vpcSpec": {
-            "dtgwSpec": {
-                "vlan": "70",
-                "gatewayCidr": "172.30.70.1/24",
-                "externalIpBlockCidr": "172.30.70.0/26",
-                "privateTgwIpBlockCidr": "172.31.0.0/16"
-            }
-        },
         "nsxtManagers": [
             {
                 "hostname": "nsx01a.vcf.lab"
             }
-        ]
+        ],
+        "overlayVtepSpec": {
+            "vtepType": "NO_IP"
+        }
     },
     "vcfOperationsSpec": {
         "applianceSize": "small",

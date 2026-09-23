@@ -1,6 +1,6 @@
 {
-    "version": "9.1.0.0",
-    "vcfInstanceName": "William Lam VCF 9.1 Instance",
+    "version": "9.1.1.0",
+    "vcfInstanceName": "William Lam VCF 9.1.1 Instance",
     "sddcId": "vcf-m01",
     "ceipEnabled": true,
     "skipEsxThumbprintValidation": true,
@@ -24,6 +24,13 @@
         },
         {
             "hostname": "esx02.vcf.lab",
+            "credentials": {
+                "username": "root",
+                "password": "VMware1!"
+            }
+        },
+        {
+            "hostname": "esx03.vcf.lab",
             "credentials": {
                 "username": "root",
                 "password": "VMware1!"

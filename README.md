@@ -1,6 +1,6 @@
-# VMware Cloud Foundation (VCF) 9.1 in a Box
+# VMware Cloud Foundation (VCF) 9.1.1 in a Box
 
-Deploy a fully functional VMware Cloud Foundation 9.1 environment on one, two or three physical ESX hosts, optimized for development and lab use. This setup enables users to explore the full capabilities of VCF 9.1, ranging from Fleet Management, Self-Service Automation with Multi-Tenancy to running modern container and AI workloads, all while using minimal compute and storage resources.
+Deploy a fully functional VMware Cloud Foundation 9.1.1 environment on one, two or three physical ESX hosts, optimized for development and lab use. This setup enables users to explore the full capabilities of VCF 9.1.1, ranging from Fleet Management, Self-Service Automation with Multi-Tenancy to running modern container and AI workloads, all while using minimal compute and storage resources.
 
 📒 This deployment does not use Nested ESX and instead runs directly on physical hosts, in contrast to the [VCF Holodeck](https://vmware.github.io/Holodeck/) solution.
 
@@ -17,17 +17,42 @@ Deploy a fully functional VMware Cloud Foundation 9.1 environment on one, two or
 
 ## Changelog
 
+* **10/23/2026**
+  * Updated for VCF 9.1.1
+
 * **05/28/2026**
   * Initial Release
 
 ## Bill of Materials (BOM)
 
- * [VMware Cloud Foundation (VCF) 9.1.0.0](https://support.broadcom.com/group/ecx/productfiles?subFamily=VMware%20Cloud%20Foundation&displayGroup=VMware%20Cloud%20Foundation%209&release=9.1.0.0&os=&servicePk=&language=EN)
-   * VCF Installer 9.1.0
-   * VCF 9.1.0 Binaries using VCF Offline Depot
- * ~275GB Memory (highly recommend enabling NVMe Tiering with higher endurance drives for improved performance)
- * Single Host Deployment [ThinkStation P5](https://www.lenovo.com/us/en/p/workstations/thinkstation-p-series/thinkstation-p5-workstation/len102s0011)
- * Dual or Triple Host Deployment [Minisforum MS-A2](https://williamlam.com/2025/07/vcf-9-0-hardware-bom-for-silicon-valley-vmug.html)
+![](screenshots/screenshot-18.jpg)
+
+| Category | Component | Function / Details | Qty | Unit Price (USD) |
+| :--- | :--- | :--- | :---: | :---: |
+| Server | [Minisforum MS-A2 (7945HX) Barebones](amzn.to/46xuK3X) | ESX Host | 2-3 | $789.00 |
+| Server | [Crucial 128GB Kit (2x64GB) DDR5 SODIMM](amzn.to/4bcpXFJ) | ESX Memory | 2-3 | $279.99 USD ($1195 USD as of 01/07/26) |
+| Server | [SK Hynix Gold P31 500GB NVME](amzn.to/4eKEQkm) | ESX Install + VMFS Volume | 2-3 | $44.09 USD |
+| Server | [Samsung SSD 990 PRO 1TB NVME](https://amzn.to/4rp0uku) | vSAN ESA | 2-3 | $399 |
+| Server | [Samsung 980 PRO 1TB NVME](https://amzn.to/4hcoDGc) | NVMe Tierinng | 2-3 | Owned Previously |
+| Networking | [MikroTik CRS304-4XG-IN](amzn.to/44J1rt4) | 10GbE Routing Switch | 1 | $188.00 |
+| Networking | [Sodola 5 x 10GbE Managed Switch](amzn.to/3PD5eUY) | 10GbE Managed Switch | 1 | $169.00 |
+| Networking | [10Gtek SFP+ to RJ45 Module](https://amzn.to/4nAs6B9) | SFP+ to RJ45 Adapter for MS-A2 | 2-3 | $70.75 |
+| Private AI | [RTX 4000 SFF Ada with 20GB VRAM](https://amzn.to/4mSxQ7J) | GPU for Private AI Services | 1 | $1,199 |
+| Private AI | [Aoostar AG01 OCuLink eGPU Dock](https://aoostar.com/products/aoostar-ag01-egpu-dock-with-oculink-port-built-in-huntkey-800w-power-supply-pre-order-itll-be-shipped-around-february-20th) | eGPU Dock | 1 | $179 |
+| Rack Enclosure | [DeskPi RackMate T2 (12U)](https://amzn.to/4mZmlvd) | Mini-Rack Chassis (12U) | 1 | $159.99 |
+| Rack Accessory | [DeskPi 7.84 inch LCD Touch Screen](https://amzn.to/3KCZ0C4) | 2U Direct Console Display | 1 | $89.99 |
+| Rack Accessory | [DeskPi Server 2-Pack Rack Shelf](https://amzn.to/46SFjgU) | 0.5U Mounting Shelf | 1 | $32.39 |
+| Rack Accessory | [DeskPi Server Rack Shelf](https://amzn.to/3KD7Orz) | 1U Mounting Shelf | 2 | $25.99 |
+| Rack Accessory | [DeskPi Server Rack Blank Panel](https://amzn.to/4nL5xsV) | 2U Blank Panel | 1 | $14.99 |
+| Rack Accessory | [DeskPi 12-port Patch Panel](https://amzn.to/42vwfNP) | 0.5U Ethernet Patch Panel | 1 | $18.39 |
+| Rack Accessory | [DeskPi 12-Port Blank Patch Panel](https://amzn.to/48jOAB9) | 0.5U Blank Patch Panel | 1 | $10.39 |
+| Rack Accessory | [Blazin3D 12-port PDU](https://amzn.to/4n4EUhG) | 1U Power Distribution Unit | 1 | $49.99 |
+| Rack Accessory | [1.5 Inch EMA 5-15P Extension Power Cord](https://amzn.to/4gZg413) | Power Cables | 3 | $6.99 |
+| Rack Accessory | [Dual 120MM USB Fan]((https://amzn.to/3W03iFV)) | Rack Enclosure Cooling | 1 | $21.99 |
+| Rack Accessory | [Monoprice SlimRun 5-pack 2 feet Cat6 Cable](https://amzn.to/3IYcCXT) | Patch Cabling | 1 | $9.02 |
+| Rack Accessory | [Monoprice SlimRun 5-pack 6 inch Cat6 Cable](https://amzn.to/4gZS6CV) | Short Patch Cabling | 1 | $9.02 |
+| Rack Accessory | [D-Ring Cable Management Hooks](https://amzn.to/4o3Etpb) | 5-Pack Routing Hooks | 1 | $13.79 |
+| Rack Accessory | [18" Zip Ties](https://amzn.to/4q55Y2T) | 100-Pack Cable Ties | 1 | $9.99 |
 
 📒 The above BOM is just an example. You can certainly swap out full systems and/or components that you might already have or prefer alternatives. Just know that you are responsible for adjusting any configuration that may differ from the referenced BOM.
 
@@ -38,6 +63,7 @@ Deploy a fully functional VMware Cloud Foundation 9.1 environment on one, two or
     * VLAN 40 - vMotion
     * VLAN 50 - vSAN
     * VLAN 60 - ESX/NSX Edge TEP
+      * Can be used for VLAN-backed VPC (Optional)
     * VLAN 70
        * Tier 0 Uplink for Centralized Transit Gateway (Optional)
        * External Connectivity for Distributed Transit Gateway (Optional)
@@ -90,94 +116,104 @@ After downloading the required metadata/binaries, you should have a directory st
 ```
 PROD
 ├── COMP
-│   ├── DEPOT_SERVICE
-│   │   ├── configuration-schema-vcf-fleet-depot-9.1.0.0.25371105.yaml
-│   │   ├── depot-manifest-vcf-fleet-depot-9.1.0.0.25371105.yaml
-│   │   ├── vcf-fleet-depot-9.1.0.0.25371105.tgz
-│   │   └── vcf-fleet-depot-plugin-9.1.0.0.25371105.tgz
-│   ├── ESX_HOST
-│   │   └── VMware-VMvisor-Installer-9.1.0.0.25370933.x86_64.iso
-│   ├── NSX_T_MANAGER
-│   │   ├── nsx-unified-appliance-9.1.0.0.25318227.ova
-│   │   └── VMware-NSX-T-9.1.0.0.25318227.vlcp
-│   ├── SDDC_MANAGER_VCF
-│   │   ├── Compatibility
-│   │   │   └── VmwareCompatibilityData.json
-│   │   └── VCF-SDDC-Manager-Appliance-9.1.0.0.25371088.ova
-│   ├── TELEMETRY_ACCEPTOR
-│   │   ├── configuration-schema-telemetry-acceptor-9.1.0.0.25181946.yaml
-│   │   ├── depot-manifest-telemetry-acceptor-9.1.0.0.25181946.yaml
-│   │   ├── telemetry-acceptor-9.1.0.0.25181946.tgz
-│   │   └── telemetry-acceptor-plugin-9.1.0.0.25181946.tgz
-│   ├── VCENTER
-│   │   └── VMware-VCSA-all-9.1.0.0.25370922.iso
-│   ├── VCF_FLEET_LCM
-│   │   ├── configuration-schema-vcf-fleet-lcm-9.1.0.0.25371109.yaml
-│   │   ├── depot-manifest-vcf-fleet-lcm-9.1.0.0.25371109.yaml
-│   │   ├── vcf-fleet-lcm-9.1.0.0.25371109.tgz
-│   │   └── vcf-fleet-lcm-plugin-9.1.0.0.25371109.tgz
-│   ├── VCF_LICENSE_SERVER
-│   │   └── Vcf-License-Server-9.1.0.0.25346031.ova
-│   ├── VCF_OPS_CLOUD_PROXY
-│   │   └── Operations-Cloud-Proxy-9.1.0.0.25346033.ova
-│   ├── VCF_SALT
-│   │   ├── configuration-schema-salt-9.1.0.0.25346036.yaml
-│   │   ├── depot-manifest-salt-9.1.0.0.25346036.yaml
-│   │   ├── salt-9.1.0.0.25346036.tgz
-│   │   └── salt-plugin-9.1.0.0.25346036.tgz
-│   ├── VCF_SALT_RAAS
-│   │   ├── configuration-schema-salt-raas-9.1.0.0.25346036.yaml
-│   │   ├── depot-manifest-salt-raas-9.1.0.0.25346036.yaml
-│   │   ├── salt-raas-9.1.0.0.25346036.tgz
-│   │   └── salt-raas-plugin-9.1.0.0.25346036.tgz
-│   ├── VCF_SDDC_LCM
-│   │   ├── configuration-schema-vcf-sddc-lcm-9.1.0.0.25371107.yaml
-│   │   ├── depot-manifest-vcf-sddc-lcm-9.1.0.0.25371107.yaml
-│   │   ├── vcf-sddc-lcm-9.1.0.0.25371107.tgz
-│   │   └── vcf-sddc-lcm-plugin-9.1.0.0.25371107.tgz
-│   ├── VCF_SERVICE_VCD_MIGRATION_BACKEND
-│   │   ├── configuration-schema-vcd-migrator-9.1.0.0.25370929.yaml
-│   │   ├── depot-manifest-vcd-migrator-9.1.0.0.25370929.yaml
-│   │   ├── vcd-migrator-9.1.0.0.25370929.tgz
-│   │   └── vcd-migrator-plugin-9.1.0.0.25370929.tgz
-│   ├── VIDB
-│   │   ├── configuration-schema-vidb-9.1.0.0.25368698.yaml
-│   │   ├── depot-manifest-vidb-9.1.0.0.25368698.yaml
-│   │   ├── vidb-9.1.0.0.25368698.tgz
-│   │   └── vidb-upgrade-plugin-9.1.0.0.25368698.tgz
-│   ├── VRA
-│   │   ├── configuration-schema-vcfa-bundle-9.1.0.0.25370929.yaml
-│   │   ├── depot-manifest-vcfa-bundle-9.1.0.0.25370929.yaml
-│   │   ├── vcfa-bundle-9.1.0.0.25370929.tar
-│   │   └── vcfa-plugin-9.1.0.0.25370929.tgz
-│   ├── VROPS
-│   │   └── Operations-Appliance-9.1.0.0.25346025.ova
-│   └── VSP
-│       ├── configuration-schema-vmsp-platform-9.1.0.0.25370367.yaml
-│       ├── depot-manifest-vmsp-platform-9.1.0.0.25370367.yaml
-│       ├── vcf-services-platform-template-9.1.0.0.25370367.ova
-│       ├── vmsp-cli-9.1.0.0.25370367.tar.gz
-│       ├── vmsp-platform-9.1.0.0.25370367.tar
-│       └── vmsp-plugin-9.1.0.0.25370367.tgz
+│   ├── DEPOT_SERVICE
+│   │   ├── configuration-schema-vcf-fleet-depot-9.1.1.0.25713941.yaml
+│   │   ├── depot-manifest-vcf-fleet-depot-9.1.1.0.25713941.yaml
+│   │   ├── vcf-fleet-depot-9.1.1.0.25713941.tgz
+│   │   └── vcf-fleet-depot-plugin-9.1.1.0.25713941.tgz
+│   ├── ESX_HOST
+│   ├── NSX_T_MANAGER
+│   │   ├── nsx-unified-appliance-9.1.1.0.25691516.ova
+│   │   ├── VMware-NSX-T-9.1.1.0.25691516.vlcp
+│   ├── SDDC_MANAGER_VCF
+│   │   ├── Compatibility
+│   │   │   └── VmwareCompatibilityData.json
+│   │   ├── VCF-SDDC-Manager-Appliance-9.1.1.0.25713928.ova
+│   ├── TELEMETRY_ACCEPTOR
+│   │   ├── configuration-schema-telemetry-acceptor-9.1.1.0.25671600.yaml
+│   │   ├── depot-manifest-telemetry-acceptor-9.1.1.0.25671600.yaml
+│   │   ├── telemetry-acceptor-9.1.1.0.25671600.tgz
+│   │   └── telemetry-acceptor-plugin-9.1.1.0.25671600.tgz
+│   ├── VCENTER
+│   │   ├── VMware-VCSA-all-9.1.1.0.25712839.iso
+│   ├── VCF_FLEET_LCM
+│   │   ├── configuration-schema-vcf-fleet-lcm-9.1.1.0.25713934.yaml
+│   │   ├── depot-manifest-vcf-fleet-lcm-9.1.1.0.25713934.yaml
+│   │   ├── vcf-fleet-lcm-9.1.1.0.25713934.tgz
+│   │   └── vcf-fleet-lcm-plugin-9.1.1.0.25713934.tgz
+│   ├── VCF_LICENSE_SERVER
+│   │   └── Vcf-License-Server-9.1.1.0.25679819.ova
+│   ├── VCF_OPS_CLOUD_PROXY
+│   │   └── Operations-Cloud-Proxy-9.1.1.0.25679891.ova
+│   ├── VCF_SALT
+│   │   ├── configuration-schema-salt-9.1.1.0.25679895.yaml
+│   │   ├── depot-manifest-salt-9.1.1.0.25679895.yaml
+│   │   ├── salt-9.1.1.0.25679895.tgz
+│   │   └── salt-plugin-9.1.1.0.25679895.tgz
+│   ├── VCF_SALT_RAAS
+│   │   ├── configuration-schema-salt-raas-9.1.1.0.25679895.yaml
+│   │   ├── depot-manifest-salt-raas-9.1.1.0.25679895.yaml
+│   │   ├── salt-raas-9.1.1.0.25679895.tgz
+│   │   └── salt-raas-plugin-9.1.1.0.25679895.tgz
+│   ├── VCF_SDDC_LCM
+│   │   ├── configuration-schema-vcf-sddc-lcm-9.1.1.0.25713940.yaml
+│   │   ├── depot-manifest-vcf-sddc-lcm-9.1.1.0.25713940.yaml
+│   │   ├── vcf-sddc-lcm-9.1.1.0.25713940.tgz
+│   │   └── vcf-sddc-lcm-plugin-9.1.1.0.25713940.tgz
+│   ├── VCF_SERVICE_VCD_MIGRATION_BACKEND
+│   │   ├── configuration-schema-vcd-migrator-9.1.1.0.25714559.yaml
+│   │   ├── depot-manifest-vcd-migrator-9.1.1.0.25714559.yaml
+│   │   ├── vcd-migrator-9.1.1.0.25714559.tgz
+│   │   └── vcd-migrator-plugin-9.1.1.0.25714559.tgz
+│   ├── VIDB
+│   │   ├── configuration-schema-vidb-9.1.1.0.25679886.yaml
+│   │   ├── depot-manifest-vidb-9.1.1.0.25679886.yaml
+│   │   ├── vidb-9.1.1.0.25679886.tgz
+│   ├── VRA
+│   │   ├── configuration-schema-vcfa-bundle-9.1.1.0.25714559.yaml
+│   │   ├── depot-manifest-vcfa-bundle-9.1.1.0.25714559.yaml
+│   │   ├── vcfa-bundle-9.1.1.0.25714559.tar
+│   │   ├── vcfa-plugin-9.1.1.0.25714559.tgz
+│   ├── VRLI
+│   │   ├── configuration-schema-operations-logs-9.1.1.0.25679624.yaml
+│   │   ├── depot-manifest-operations-logs-9.1.1.0.25679624.yaml
+│   │   ├── operations-logs-9.1.1.0.25679624.tgz
+│   │   └── operations-logs-plugin-9.1.1.0.25679624.tgz
+│   ├── VROPS
+│   │   ├── Operations-Appliance-9.1.1.0.25679751.ova
+│   └── VSP
+│       ├── configuration-schema-vmsp-platform-9.1.1.0.25714471.yaml
+│       ├── depot-manifest-vmsp-platform-9.1.1.0.25714471.yaml
+│       ├── vcf-services-platform-template-9.1.1.0.25714471.ova
+│       ├── vmsp-cli-9.1.1.0.25714471.tar.gz
+│       ├── vmsp-platform-9.1.1.0.25714471.tar
+│       └── vmsp-plugin-9.1.1.0.25714471.tgz
 ├── metadata
-│   ├── manifest
-│   │   └── v1
-│   │       └── vcfManifest.json
-│   └── productVersionCatalog
-│       └── v1
-│           ├── productVersionCatalog.json
-│           └── productVersionCatalog.sig
+│   ├── Compatibility
+│   │   ├── v1
+│   │   │   └── VmwareCompatibilityData.json
+│   │   └── v2
+│   │       └── VmwareCompatibilityData.json
+│   ├── manifest
+│   │   └── v1
+│   │       └── vcfManifest.json
+│   ├── productVersionCatalog
+│   │   └── v1
+│   │       ├── productVersionCatalog.json
+│   │       └── productVersionCatalog.sig
+│   └── vsan
+│       └── hcl
+│           ├── all.json
+│           └── lastupdatedtime.json
 └── vsan
     └── hcl
         ├── all.json
         └── lastupdatedtime.json
-
-27 directories, 56 files
 ```
 
 You can host the VCF Offline Depot using a traditional HTTP Web Server (HTTPS is NOT required as the automation in 9.1 will support HTTP). Alternatively, you can simply use Python to serve up the directory (see this [blog post](https://williamlam.com/2025/06/using-http-with-vcf-9-0-installer-for-offline-depot.html)) or even a Synology (see this [blog post](https://williamlam.com/2025/06/vcf-9-0-offline-depot-using-synology.html)).
 
-2. Create a bootable ESX installer with the ESX ISO (VMware-VMvisor-Installer-9.1.0.0.25370933.x86_64.iso) using [UNetbootin](https://unetbootin.github.io/).
+2. Create a bootable ESX installer with the ESX ISO (VMware-VMvisor-Installer-9.1.1.0.25714478.x86_64.iso) using [UNetbootin](https://unetbootin.github.io/).
 
 3. We will perform a scripted installation of ESX (aka ESX Kickstart) to reduce the number of manual post-installation steps.
 
@@ -202,8 +238,8 @@ timeout=5
 prefix=
 kernel=/b.b00
 kernelopt=ks=usb:/KS-ESX01.CFG
-modules=/jumpstrt.gz --- /useropts.gz --- /features.gz --- /k.b00 --- /uc_intel.b00 --- /uc_amd.b00 --- /uc_hygon.b00 --- /vmx.v00 --- /vim.v00 --- /tpm.v00 --- /sb.v00 --- /s.v00 --- /atlantic.v00 --- /bcm_mpi3.v00 --- /bnxtnet.v00 --- /bnxtroce.v00 --- /cndi_igc.v00 --- /elxnet.v00 --- /i40en.v00 --- /iavmd.v00 --- /icen.v00 --- /igbn.v00 --- /intelgpi.v00 --- /ionic_cl.v00 --- /ionic_en.v00 --- /irdman.v00 --- /iser.v00 --- /ixgben.v00 --- /lpfc.v00 --- /lpnic.v00 --- /lsi_mr3.v00 --- /lsi_msgp.v00 --- /lsi_msgp.v01 --- /ne1000.v00 --- /nenic_en.v00 --- /nenic.v00 --- /nfnic.v00 --- /nhpsa.v00 --- /nipmi.v00 --- /nmlx5_cc.v00 --- /nmlx5_co.v00 --- /nmlx5_rd.v00 --- /ntg3.v00 --- /nvme_pci.v00 --- /nvmerdma.v00 --- /nvmetcp.v00 --- /nvmxnet3.v00 --- /nvmxnet3.v01 --- /pvscsi.v00 --- /qat.v00 --- /qcnic.v00 --- /qedentv.v00 --- /qedrntv.v00 --- /qfle3.v00 --- /qfle3f.v00 --- /qfle3i.v00 --- /rdmahl.v00 --- /rshim_ne.v00 --- /rshim.v00 --- /sfvmk.v00 --- /smartpqi.v00 --- /vmkata.v00 --- /vmksdhci.v00 --- /vmkusb.v00 --- /vmw_ahci.v00 --- /bmcal.v00 --- /clusters.v00 --- /crx.v00 --- /drivervm.v00 --- /btldr.v00 --- /dvfilter.v00 --- /esx_ui.v00 --- /esxupdt.v00 --- /tpmesxup.v00 --- /weaselin.v00 --- /xorg.v00 --- /esxio_co.v00 --- /infravis.v00 --- /loadesx.v00 --- /hpv2_hps.v00 --- /intelv2_.v00 --- /lsiv2_dr.v00 --- /nvme_pci.v01 --- /oem_dell.v00 --- /oem_leno.v00 --- /smartpqi.v01 --- /native_m.v00 --- /nsx_pyth.v01 --- /podvm_ro.v00 --- /qlnative.v00 --- /trx.v00 --- /vcls_pod.v00 --- /vdfs.v00 --- /vds_vsip.v00 --- /vmware_e.v00 --- /vmware_f.v00 --- /hbrsrv.v00 --- /vsan.v00 --- /vsanheal.v00 --- /vsanmgmt.v00 --- /tools.t00 --- /qp_esx_d.v00 --- /nsx_adf.v00 --- /nsx_cfga.v00 --- /nsx_cont.v00 --- /nsx_cpp_.v00 --- /nsx_esx_.v00 --- /nsx_expo.v00 --- /nsx_head.v00 --- /nsx_host.v00 --- /nsx_moni.v00 --- /nsx_mpa.v00 --- /nsx_nest.v00 --- /nsx_neto.v00 --- /nsx_opsa.v00 --- /nsx_plat.v00 --- /nsx_prot.v00 --- /nsx_prox.v00 --- /nsx_pyth.v00 --- /nsx_pyth.v02 --- /nsx_scx.v00 --- /nsx_sfhc.v00 --- /nsx_shar.v00 --- /nsx_snpr.v00 --- /nsxcli.v00 --- /vsipfwli.v00 --- /gc.v00 --- /imgdb.tgz --- /basemisc.tgz --- /resvibs.tgz --- /esxiodpt.tgz --- /imgpayld.tgz
-build=9.1.0-0.25370933
+modules=jumpstrt.gz --- useropts.gz --- features.gz --- k.b00 --- uc_intel.b00 --- uc_amd.b00 --- uc_hygon.b00 --- vmx.v00 --- vim.v00 --- tpm.v00 --- sb.v00 --- s.v00 --- atlantic.v00 --- bcm_mpi3.v00 --- bnxtnet.v00 --- bnxtroce.v00 --- cndi_igc.v00 --- elxnet.v00 --- i40en.v00 --- iavmd.v00 --- icen.v00 --- igbn.v00 --- intelgpi.v00 --- ionic_cl.v00 --- ionic_en.v00 --- irdman.v00 --- iser.v00 --- ixgben.v00 --- lpfc.v00 --- lpnic.v00 --- lsi_mr3.v00 --- lsi_msgp.v00 --- lsi_msgp.v01 --- ne1000.v00 --- nenic_en.v00 --- nenic.v00 --- nfnic.v00 --- nhpsa.v00 --- nipmi.v00 --- nmlx5_cc.v00 --- nmlx5_co.v00 --- nmlx5_rd.v00 --- ntg3.v00 --- nvme_pci.v00 --- nvmerdma.v00 --- nvmetcp.v00 --- nvmxnet3.v00 --- nvmxnet3.v01 --- pvscsi.v00 --- qat.v00 --- qcnic.v00 --- qedentv.v00 --- qedrntv.v00 --- qfle3.v00 --- qfle3f.v00 --- qfle3i.v00 --- rdmahl.v00 --- rshim_ne.v00 --- rshim.v00 --- sfvmk.v00 --- smartpqi.v00 --- vmkata.v00 --- vmksdhci.v00 --- vmkusb.v00 --- vmw_ahci.v00 --- bmcal.v00 --- clusters.v00 --- crx.v00 --- drivervm.v00 --- btldr.v00 --- dvfilter.v00 --- esx_ui.v00 --- esxupdt.v00 --- tpmesxup.v00 --- weaselin.v00 --- xorg.v00 --- esxio_co.v00 --- infravis.v00 --- loadesx.v00 --- hpv2_hps.v00 --- intelv2_.v00 --- lsiv2_dr.v00 --- nvme_pci.v01 --- oem_dell.v00 --- oem_leno.v00 --- smartpqi.v01 --- native_m.v00 --- nsx_pyth.v01 --- podvm_ro.v00 --- qlnative.v00 --- trx.v00 --- vcls_pod.v00 --- vdfs.v00 --- vds_vsip.v00 --- vmware_e.v00 --- vmware_f.v00 --- hbrsrv.v00 --- vsan.v00 --- vsanheal.v00 --- vsanmgmt.v00 --- tools.t00 --- qp_esx_d.v00 --- nsx_adf.v00 --- nsx_cfga.v00 --- nsx_cont.v00 --- nsx_cpp_.v00 --- nsx_esx_.v00 --- nsx_expo.v00 --- nsx_head.v00 --- nsx_host.v00 --- nsx_moni.v00 --- nsx_mpa.v00 --- nsx_nest.v00 --- nsx_neto.v00 --- nsx_opsa.v00 --- nsx_plat.v00 --- nsx_prot.v00 --- nsx_prox.v00 --- nsx_pyth.v00 --- nsx_pyth.v02 --- nsx_scx.v00 --- nsx_sfhc.v00 --- nsx_shar.v00 --- nsx_snpr.v00 --- nsxcli.v00 --- vsipfwli.v00 --- gc.v00 --- imgdb.tgz --- basemisc.tgz --- resvibs.tgz --- esxiodpt.tgz --- imgpayld.tgz
+build=9.1.1-0.25714478
 updated=0
 ```
 
@@ -215,7 +251,7 @@ updated=0
 
 ![](screenshots/screenshot-3.png)
 
-7. Deploy the VCF Installer appliance (VCF-SDDC-Manager-Appliance-9.1.0.0.25371088.ova) using the following shell script, [deploy_vcf_installer.sh](scripts/deploy_vcf_installer.sh), which relies on [OVFTool](https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool/latest). Install OVFTool if you do not already have it on your local system.
+7. Deploy the VCF Installer appliance (VCF-SDDC-Manager-Appliance-9.1.1.0.25713928.ova) using the following shell script, [deploy_vcf_installer.sh](scripts/deploy_vcf_installer.sh), which relies on [OVFTool](https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool/latest). Install OVFTool if you do not already have it on your local system.
 
 ![](screenshots/screenshot-4.png)
 
@@ -238,9 +274,15 @@ If Step 8 successfully connected to your VCF Offline Depot, it should already ha
 ![](screenshots/screenshot-9.png)
 
 Upload your modified [VCF deployment JSON](config/) and click `Next` to begin the validation.
-* [VCF 9.1 One Host Deployment JSON Samples](config/one-node-vsan-esa.json)
-* [VCF 9.1 Two Host Deployment JSON Samples](config/two-node-vsan-esa.json)
-* [VCF 9.1 Three Host Deployment JSON Samples](config/three-node-vsan-esa.json)
+* One Host:
+  * [VCF 9.1.1 One Host Deployment w/TEP JSON Sample](config/one-node-vsan-esa-tep.json)
+  * [VCF 9.1.1 One Host Deployment w/TEP-less JSON Sample](config/one-node-vsan-esa-tepless.json)
+* Two Host:
+  * [VCF 9.1.1 Two Host Deployment w/TEP JSON Sample](config/two-node-vsan-esa-tep.json)
+  * [VCF 9.1.1 Two Host Deployment w/TEP-less JSON Sample](config/two-node-vsan-esa-tepless.json)
+* Three Host:
+  * [VCF 9.1.1 Three Host Deployment w/TEP JSON Sample](config/three-node-vsan-esa-tep.json)
+  * [VCF 9.1.1 Three Host Deployment w/TEP-less JSON Sample](config/three-node-vsan-esa-tepless.json)
 
 ![](screenshots/screenshot-10.png)
 
@@ -280,4 +322,5 @@ Here is an example of single host deployment and total deployment duration for e
 
 * [VMware Cloud Foundation (VCF) on Minisforum MS-A2](https://williamlam.com/2025/06/vmware-cloud-foundation-vcf-on-minisforum-ms-a2.html)
    * [VCF 9.x Hardware BOM for Silicon Valley VMUG](https://williamlam.com/2025/07/vcf-9-0-hardware-bom-for-silicon-valley-vmug.html)
+   * [My VCF 9 Lab Mini-Rack](https://williamlam.com/2025/10/my-vcf-9-lab-mini-rack.html)
 * [VCF 9.1 Resources](https://williamlam.com/vmware-cloud-foundation-9)
